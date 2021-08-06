@@ -1,1 +1,37 @@
-<p>layout works!</p>
+<div class="row">
+  <div class="col-12 col-lg-4">
+    <div class="form-group">
+      <label>Select <code>font-variant-numeric</code> value:</label>
+      <select class="form-control" [(ngModel)]="fontValue">
+        <optgroup *ngFor="let category of fontValues" [label]="category.category">
+          <option *ngFor="let value of category.values" [value]="value">
+            {{value}}
+          </option>
+        </optgroup>
+      </select>
+    </div>
+  </div>
+  <div class="col-12 col-lg-4 offset-lg-4">
+    <label>Font Value:</label>
+    <input class="form-control-plaintext" [value]="fontValue">
+  </div>
+</div>
+
+<hr>
+
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <tr>
+      <th>Hora</th>
+      <th>Columna 1</th>
+      <th>Columna 2</th>
+    </tr>
+    <tr *ngFor="let row of rows">
+      <td [ngStyle]="{'font-variant-numeric':fontValue}">
+        {{row.hours}}
+      </td>
+      <td>{{row.columnOne}}</td>
+      <td>{{row.columnTwo}}</td>
+    </tr>
+  </table>
+</div>
